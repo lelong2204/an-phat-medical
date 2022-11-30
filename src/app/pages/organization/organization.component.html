@@ -1,8 +1,20 @@
 <h2 class="content-block">Organization</h2>
 <div class="content-block">
     <div class="dx-card responsive-paddings">
-        <dx-data-grid class="dx-card wide-card" [dataSource]="dataSource" [showBorders]="false"
-            [focusedRowEnabled]="true" [focusedRowIndex]="0" [columnAutoWidth]="true" [columnHidingEnabled]="true">
+        <dx-data-grid 
+            class="dx-card wide-card" 
+            [dataSource]="dataSource" 
+            [showBorders]="false"
+            [focusedRowEnabled]="true" 
+            [focusedRowIndex]="0" 
+            [columnAutoWidth]="true" 
+            [columnHidingEnabled]="true"
+            keyExpr="id"
+        >
+            <dxi-button name="aa" >aaaaaa</dxi-button>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxi-column dataField="name"></dxi-column>
+            <dxi-column dataField="active" ></dxi-column>
         </dx-data-grid>
     </div>
 </div>
