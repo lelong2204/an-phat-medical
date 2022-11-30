@@ -1,20 +1,24 @@
 <h2 class="content-block">Organization</h2>
 <div class="content-block">
     <div class="dx-card responsive-paddings">
-        <dx-data-grid 
-            class="dx-card wide-card" 
-            [dataSource]="dataSource" 
-            [showBorders]="false"
-            [focusedRowEnabled]="true" 
-            [focusedRowIndex]="0" 
-            [columnAutoWidth]="true" 
-            [columnHidingEnabled]="true"
-            keyExpr="id"
-        >
-            <dxi-button name="aa" >aaaaaa</dxi-button>
-            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dx-responsive-box style="margin-bottom: 10px;">
+            <dxi-row [ratio]="1"></dxi-row>
+            <dxi-col [ratio]="1"></dxi-col>
+            <dxi-col [ratio]="1"></dxi-col>
+            <dxi-item>
+                <dxi-location screen="md lg" [row]="0" [col]="0"></dxi-location>
+                <dx-button text="aaaaaaaaaaa"></dx-button>
+            </dxi-item>
+            <dxi-item>
+                <dxi-location screen="md lg" [row]="0" [col]="1"></dxi-location>
+                <dx-text-box value="John Smith"></dx-text-box>
+            </dxi-item>
+        </dx-responsive-box>
+        <dx-data-grid class="dx-card wide-card" [dataSource]="dataSource" [showBorders]="false"
+            [focusedRowEnabled]="true" [focusedRowIndex]="0" [columnAutoWidth]="true" [columnHidingEnabled]="true"
+            keyExpr="id">
             <dxi-column dataField="name"></dxi-column>
-            <dxi-column dataField="active" ></dxi-column>
+            <dxi-column dataField="active"></dxi-column>
         </dx-data-grid>
     </div>
 </div>
