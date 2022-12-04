@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+.text-center {
+    text-align: center;
+}
+
+.dx-field-item:not(.dx-field-item-has-group):not(.dx-field-item-has-tabs):not(.dx-first-row):not(.dx-label-v-align) {
+    padding-top: 10px;
+}

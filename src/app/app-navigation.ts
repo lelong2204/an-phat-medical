@@ -21,10 +21,5 @@ export const navigation = [
         path: '/organization'
       }
     ]
-  },
-  {
-    text: 'Organization',
-    path: '/pages/organization',
-    icon: 'folder'
   }
 ];

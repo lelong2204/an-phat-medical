@@ -1,24 +1,72 @@
 <h2 class="content-block">Organization</h2>
 <div class="content-block">
     <div class="dx-card responsive-paddings">
-        <dx-responsive-box style="margin-bottom: 10px;">
-            <dxi-row [ratio]="1"></dxi-row>
-            <dxi-col [ratio]="1"></dxi-col>
-            <dxi-col [ratio]="1"></dxi-col>
-            <dxi-item>
-                <dxi-location screen="md lg" [row]="0" [col]="0"></dxi-location>
-                <dx-button text="aaaaaaaaaaa"></dx-button>
-            </dxi-item>
-            <dxi-item>
-                <dxi-location screen="md lg" [row]="0" [col]="1"></dxi-location>
-                <dx-text-box value="John Smith"></dx-text-box>
-            </dxi-item>
-        </dx-responsive-box>
         <dx-data-grid class="dx-card wide-card" [dataSource]="dataSource" [showBorders]="false"
             [focusedRowEnabled]="true" [focusedRowIndex]="0" [columnAutoWidth]="true" [columnHidingEnabled]="true"
-            keyExpr="id">
+            keyExpr="id" (onToolbarPreparing)="onToolbarPreparing($event)">
+            <dxo-search-panel
+                [visible]="true"
+                [width]="240"
+                placeholder="Search..."
+            ></dxo-search-panel>
             <dxi-column dataField="name"></dxi-column>
             <dxi-column dataField="active"></dxi-column>
         </dx-data-grid>
+        <dx-popup [maxWidth]="700" [maxHeight]="900" [showCloseButton]="false" [showTitle]="false"
+            container=".dx-viewport" [(visible)]="popupVisible" [closeOnOutsideClick]="true" contentTemplate="content">
+            <dx-scroll-view style="padding: 0;">
+                <h6 class="text-center" style="margin: 20px;">
+                    THÔNG TIN TỔ CHỨC
+                </h6>
+                <form (submit)="onFormSubmit($event)" style="margin: 5px;">
+                    <dx-form id="form" [formData]="formData">
+                        <dxi-item itemType="group" caption="Thông tin chung">
+                            <dxi-item dataField="organizationName" [label]="{ text:'Tên tổ chức', location: 'left' }"></dxi-item>
+                            <dxi-item dataField="action" editorType="dxCheckBox" [label]="{ text:'Hoạt động', location: 'left' }"></dxi-item>
+                            <dxi-item dataField="organizationType" editorType="dxSelectBox"
+                                [label]="{ text:'Loại tổ chức', location: 'left' }"
+                                [editorOptions]="{ dataSource: organizationTypes, acceptCustomValue: true, displayExpr:'display', valueExpr:'code' }"></dxi-item>
+                            <dxi-item dataField="belongsOrganization" editorType="dxSelectBox"
+                                [label]="{ text:'Thuộc tổ chức', location: 'left' }"
+                                [editorOptions]="{ dataSource: dataSource, acceptCustomValue: true, displayExpr:'name', valueExpr:'id' }"></dxi-item>
+                        </dxi-item>
+                        <dxi-item itemType="group" caption="Thông tin liên hệ">
+                            <dxi-item itemType="group" colCount="3"
+                                *ngFor="let contact of formData.contacts; let i = index">
+                                <dxi-item [dataField]="'contacts[' + i + '].contactType'" editorType="dxSelectBox"
+                                    [label]="{ text:'Loại liên hệ', location: 'left' }"
+                                    [editorOptions]="{ dataSource: contactTypes, acceptCustomValue: true, displayExpr:'display', valueExpr:'code' }"></dxi-item>
+                                <dxi-item [dataField]="'contacts[' + i + '].usingFor'" editorType="dxSelectBox"
+                                    [label]="{ text:'Sử dụng cho', location: 'left' }"
+                                    [editorOptions]="{ dataSource: contactUsingFor, acceptCustomValue: true, displayExpr:'display', valueExpr:'code' }"></dxi-item>
+                                <dxi-item [dataField]="'contacts[' + i + '].contactValue'"
+                                    [label]="{ text:'Giá trị', location: 'left' }">
+                                </dxi-item>
+                            </dxi-item>
+                            <dxi-item itemType="button" horizontalAlignment="left"
+                                [buttonOptions]="addContactBtnOption">
+                            </dxi-item>
+                        </dxi-item>
+                        <dxi-item itemType="group" caption="Địa chỉ liên hệ">
+                            <dxi-item itemType="group" [colCount]="3">
+                                <dxi-item dataField="addressType" editorType="dxSelectBox"
+                                    [label]="{ text:'Loại địa chỉ', location: 'left' }"
+                                    [editorOptions]="{ dataSource: [{}] }"></dxi-item>
+                            </dxi-item>
+                            <dxi-item dataField="address" [label]="{ text:'Địa chỉ', location: 'left' }"></dxi-item>
+                            <dxi-item itemType="group" [colCount]="3">
+                                <dxi-item dataField="ward" [label]="{ text:'Quận/Huyện', location: 'left' }"></dxi-item>
+                                <dxi-item dataField="city" [label]="{ text:'Thành phố', location: 'left' }"></dxi-item>
+                                <dxi-item dataField="province" [label]="{ text:'Tỉnh', location: 'left' }"></dxi-item>
+                            </dxi-item>
+                        </dxi-item>
+
+
+                        <dxi-item itemType="button" horizontalAlignment="left" [buttonOptions]="buttonOptions">
+                        </dxi-item>
+                    </dx-form>
+                </form>
+            </dx-scroll-view>
+        </dx-popup>
     </div>
 </div>

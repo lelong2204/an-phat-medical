@@ -5,7 +5,17 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxDataGridModule, DxFormModule, DxButtonModule, DxTextBoxModule, DxResponsiveBoxModule } from 'devextreme-angular';
+import { 
+  DxDataGridModule, 
+  DxFormModule, 
+  DxButtonModule, 
+  DxTextBoxModule, 
+  DxResponsiveBoxModule, 
+  DxToolbarModule,
+  DxPopupModule,
+  DxScrollViewModule
+} from 'devextreme-angular';
+import { BrowserModule } from '@angular/platform-browser'
 import { OrganizationComponent } from './pages/organization/organization.component';
 
 const routes: Routes = [
@@ -56,7 +66,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, DxButtonModule, DxTextBoxModule, DxResponsiveBoxModule],
+  imports: [
+    RouterModule.forRoot(routes, { useHash: true }), 
+    DxDataGridModule, 
+    DxFormModule, 
+    DxButtonModule, 
+    DxTextBoxModule, 
+    DxResponsiveBoxModule, 
+    DxToolbarModule,
+    DxPopupModule,
+    DxScrollViewModule,
+    BrowserModule
+  ],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
