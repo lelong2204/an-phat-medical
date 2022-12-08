@@ -13,7 +13,11 @@ import {
   DxResponsiveBoxModule, 
   DxToolbarModule,
   DxPopupModule,
-  DxScrollViewModule
+  DxScrollViewModule,
+  DxTreeListModule,
+  DxDropDownBoxModule,
+  DxTreeViewModule,
+  DxTemplateModule
 } from 'devextreme-angular';
 import { BrowserModule } from '@angular/platform-browser'
 import { OrganizationComponent } from './pages/organization/organization.component';
@@ -76,7 +80,11 @@ const routes: Routes = [
     DxToolbarModule,
     DxPopupModule,
     DxScrollViewModule,
-    BrowserModule
+    BrowserModule,
+    DxTreeListModule,
+    DxDropDownBoxModule,
+    DxTreeViewModule,
+    DxTemplateModule
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],

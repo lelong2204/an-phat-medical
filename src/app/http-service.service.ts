@@ -12,4 +12,12 @@ export class HttpService {
   public get (path: string) {
     return this.http.get(this.REST_API_SERVER + path);
   }
+
+  public post (path: string, body: any) {
+    return this.http.post(this.REST_API_SERVER + path, body);
+  }
+
+  public delete (path: string) {
+    return this.http.delete(this.REST_API_SERVER + path);
+  }
 }
