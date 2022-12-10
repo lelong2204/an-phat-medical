@@ -28,8 +28,11 @@
                 <form (submit)="onFormSubmit($event)" style="margin: 5px;">
                     <dx-form id="form" [formData]="formData">
                         <dxi-item itemType="group" caption="Thông tin chung">
-                            <dxi-item dataField="name" [label]="{ text:'Tên tổ chức', location: 'left' }"></dxi-item>
-                            <dxi-item dataField="action" editorType="dxCheckBox" [label]="{ text:'Hoạt động', location: 'left' }"></dxi-item>
+                            <dxi-item itemType="group" colCount="2">
+                                <dxi-item dataField="name" [label]="{ text:'Tên tổ chức', location: 'left' }"></dxi-item>
+                                <dxi-item dataField="identifier[0].value" [label]="{ text:'Mã tổ chức', location: 'left' }"></dxi-item>
+                            </dxi-item>
+                            <dxi-item dataField="active" editorType="dxCheckBox" [label]="{ text:'Hoạt động', location: 'left' }"></dxi-item>
                             <dxi-item template="resourceType" >
                                 <div *dxTemplate="resourceType" class="dx-field" style="display: flex;">
                                     <div class="dx-field-label" style="width: auto;">Loại tổ chức</div>

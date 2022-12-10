@@ -28,7 +28,7 @@ export class OrganizationComponent implements OnInit {
 			this.formData.telecom.push({})
 		}
 	};
-	formData: any = { telecom: [{}], address: [{ country: "Việt Nam", line: [""] }] };
+	formData: any = { telecom: [{}], address: [{ country: "Việt Nam", line: [""] }], identifier: [{}] };
 	organizationTypes: any;
 	organizationTypeValue: string[] = [];
 	contactTypes: any;
